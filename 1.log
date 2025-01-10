@@ -1,0 +1,235 @@
+    1  ls
+    2  clear
+    3  ls
+    4  df -h
+    5  apt update
+    6  curl https://gist.githubusercontent.com/duan-li/f88a5f6fab45ef27bee0e11079954287/raw/a5ef6a5ad5da707fdd7fdd733b028323d5e9a98c/install_docker.sh > d.sh
+    7  ls
+    8  chmod a+x d.sh
+    9  sudo ./d.sh
+   10  docker ps -a
+   11  ls
+   12  mkdir pocketbase
+   13  ls
+   14  cd pocketbase/
+   15  ls
+   16  mkdir docker
+   17  ls
+   18  cd docker
+   19  ls
+   20  mkdir nginx
+   21  ls
+   22  rm -R nginx/
+   23  cd ..
+   24  mkdir nginx
+   25  ls
+   26  cd docker
+   27  ls
+   28  nano dockerfile
+   29  ls
+   30  cd ..
+   31  ls
+   32  touch readme.md
+   33  ls
+   34  touch docker-compose.yml
+   35  ls
+   36  cd pocketbase/
+   37  ls
+   38  cd docker
+   39  ls
+   40  cat dockerfile 
+   41  ls
+   42  rm dockerfile Dockerfile
+   43  ls
+   44  nano Dockerfile
+   45  ls
+   46  docker build -t pocketbase:0.23.11 .
+   47  ls
+   48  docker file
+   49  docker login https://sjc.vultrcr.com/imagehub -u 013dccc9-043b-4e9f-80f2-e53734cef584 -p pD5Sppb89PYjavqfw6h3jgeGeYEG4dkuhybw
+   50  docker images
+   51  docker push pocketbase:0.23.11
+   52  docker tag pocketbase:0.23.11 https://sjc.vultrcr.com/imagehub/pocketbase:0.23.11
+   53  docker tag pocketbase:0.23.11 sjc.vultrcr.com/imagehub/pocketbase:0.23.11
+   54  docker tag pocketbase:0.23.11 sjc.vultrcr.com/imagehub/pocketbase:latest
+   55  docker images
+   56  docker push sjc.vultrcr.com/imagehub/pocketbase
+   57  docker push sjc.vultrcr.com/imagehub/pocketbase:0.23.11
+   58  ls
+   59  docker images
+   60  ls
+   61  cd ..
+   62  ls
+   63  docker pull nginx
+   64  ls
+   65  docker images
+   66  ls
+   67  cd nginx
+   68  nano site.conf
+   69  ls
+   70  exit
+   71  apt search kubectl
+   72  apt install -y kubectl
+   73  snap install kubectl
+   74  kubectl
+   75  snap install kubectl --classic
+   76  kubectl
+   77  ls
+   78  cd .kube
+   79  ls
+   80  nano vke.yaml
+   81  kubectl --kubeconfig=./vke.yaml get pods
+   82  9a406bbc-73bb-40b3-85ba-789c1f94b667.vultr-k8s.com:6443
+   83  ping 9a406bbc-73bb-40b3-85ba-789c1f94b667.vultr-k8s.com:6443
+   84  ping 9a406bbc-73bb-40b3-85ba-789c1f94b667.vultr-k8s.com
+   85  kubectl --kubeconfig=./vke.yaml get pods
+   86  ls
+   87  nano do.yaml
+   88  ls
+   89  history
+   90  kubectl --kubeconfig=./do.yaml get pods
+   91  kubectl --kubeconfig=./do.yaml get pods --all-namespaces
+   92  ls
+   93  nano vke.yaml 
+   94  kubectl --kubeconfig=./vke.yaml get pods
+   95  ls
+   96  docker images
+   97  mkdir pgvector
+   98  cd pgvector/
+   99  wget https://github.com/pgvector/pgvector/archive/refs/tags/v0.8.0.zip
+  100  ls
+  101  unzip v0.8.0.zip 
+  102  ls
+  103  cd pgvector-0.8.0/
+  104  ls
+  105  docker build --build-arg PG_MAJOR=17 -t pgvector:17.0.8.0-singlebuild .
+  106  docker images
+  107  docker pull postgres:17
+  108  docker images
+  109  docker tag pgvector:17.0.8.0-singlebuild sjc.vultrcr.com/imagehub/pgvector:17.0.8.0-singlebuild
+  110  docker tag pgvector:17.0.8.0-singlebuild sjc.vultrcr.com/imagehub/pgvector:latest
+  111  docker pull sjc.vultrcr.com/imagehub/pgvector:17.0.8.0-singlebuild
+  112  docker images
+  113  history
+  114  docker login https://sjc.vultrcr.com/imagehub -u 013dccc9-043b-4e9f-80f2-e53734cef584 -p pD5Sppb89PYjavqfw6h3jgeGeYEG4dkuhybw
+  115  docker pull sjc.vultrcr.com/imagehub/pgvector:17.0.8.0-singlebuild
+  116  docker images
+  117  docker push sjc.vultrcr.com/imagehub/pgvector:17.0.8.0-singlebuild
+  118  history
+  119  docker images
+  120  docker push sjc.vultrcr.com/imagehub/pgvector:latest
+  121  docker images
+  122  cd 
+  123  ls
+  124  echo "" > vke.yaml 
+  125  nano vke.yaml 
+  126  cat vke.yaml 
+  127  ls
+  128  history
+  129  kubectl --kubeconfig=./vke.yaml get pods
+  130  kubectl --kubeconfig=./vke.yaml get pods --all-namespaces
+  131  ls
+  132  cd pgvector/
+  133  ls
+  134  nano pg.conf
+  135  ls
+  136  docker images
+  137  docker run -d -v /root/pgvector/pg.conf:/var/lib/postgresql/data/postgresql.conf sjc.vultrcr.com/imagehub/pgvector 
+  138  docker ps -a
+  139  docker logs agitated_wescoff
+  140  docker rm agitated_wescoff
+  141  docker ps
+  142  docker run -d -v /root/pgvector/pg.conf:/var/lib/postgresql/data/postgresql.conf -e POSTGRES_PASSWORD=password sjc.vultrcr.com/imagehub/pgvector pg
+  143  docker ps
+  144  docker ps -a
+  145  docker logs gracious_morse
+  146  docker rm gracious_morse
+  147  docker run --name pg -d -v /root/pgvector/pg.conf:/var/lib/postgresql/data/postgresql.conf -e POSTGRES_PASSWORD=password sjc.vultrcr.com/imagehub/pgvector
+  148  docker logs pg
+  149  docker rm pg
+  150  docker run --name pg -d -e POSTGRES_PASSWORD=password sjc.vultrcr.com/imagehub/pgvector
+  151  docker logs pg
+  152  docker exec -it pg /bin/sh
+  153  docker rm pg
+  154  docker kill pg
+  155  docker rm pg
+  156  docker run --name pg -d -v /root/pgvector/pg.conf:/etc/postgresql/postgresql.conf -e POSTGRES_PASSWORD=password sjc.vultrcr.com/imagehub/pgvector postgres -c config_file=/etc/postgresql/postgresql.conf
+  157  docker ps -a
+  158  docker logs pg
+  159  docker kill pg
+  160  docker rm pg
+  161  docker run --rm --name pg -d -v /root/pgvector/pg.conf:/etc/postgresql/postgresql.conf -e POSTGRES_PASSWORD=password sjc.vultrcr.com/imagehub/pgvector postgres -c config_file=/etc/postgresql/postgresql.conf
+  162  docker logs pg
+  163  ls
+  164  cd docker ps -a
+  165  docker iamges
+  166  docker images
+  167  docker run -it --rm pocketbase:0.23.11 /bin/sh
+  168  docker ps
+  169  docker kill pg
+  170  docker rm pg
+  171  docker kill thirsty_easley
+  172  docker rm thirsty_easley
+  173  history
+  174  docker run -d --name pb --rm -p 8080:8080 pocketbase:0.23.11
+  175  curl http://localhost:8080
+  176  curl http://localhost:8080/_/
+  177  docker ps -a
+  178  docker exec -it pb /bin/sh
+  179  docker kill pb
+  180  ls
+  181  docker ps -a
+  182  ls
+  183  mkdir langflow
+  184  cd langflow/
+  185  ls
+  186  nano docker-compose.yaml
+  187  docker compose up -d
+  188  ls
+  189  df -h
+  190  ls
+  191  pgbench
+  192  apt install postgresql-client-common
+  193  pgbench -c 10 -j 2 -T 30 -d langflow -h 170.64.142.124 -U admin
+  194  apt search postgresql-client
+  195  s
+  196  ls
+  197  cd pgvector/
+  198  ls
+  199  cd pgvector-0.8.0/
+  200  ls
+  201  cat Dockerfile 
+  202  vi Dockerfile 
+  203  ls
+  204  history
+  205  ls
+  206  cat Dockerfile 
+  207  docker build --build-arg PG_MAJOR=16 -t sjc.vultrcr.com/imagehub/pgvector:16.0.8.0-singlebuild .
+  208  docker ps -a
+  209  docker images
+  210  ls
+  211  docker push sjc.vultrcr.com/imagehub/pgvector:16.0.8.0-singlebuild
+  212  ls
+  213  history
+  214  apt search postgresql-client
+  215  apt install postgresql-client
+  216  pgbench -c 10 -j 2 -T 30 -d langflow -h 170.64.142.124 -U admin
+  217  apt install postgresql-client-16
+  218  pgbench -c 10 -j 2 -T 30 -d langflow -h 170.64.142.124 -U admin
+  219  apt search postgresql-client
+  220  apt search postgresql-client-common
+  221  apt install postgresql-client-common
+  222  pgbench -c 10 -j 2 -T 30 -d langflow -h 170.64.142.124 -U admin
+  223  pgbench -c 10 -j 2 -T 30 -d admin -h 170.64.142.124 -U admin
+  224  pgbench -i -s 10 -d defaultdb -h vultr-prod-7d802487-81ba-420e-ab75-4293fa04feeb-vultr-prod-8582.vultrdb.com -p 16751 -U vultradmin
+  225  ls
+  226  docker image
+  227  docker images
+  228  docker run -it --rm postgres:16 /bin/bash
+  229  exit
+  230  ls
+  231  cd pgvector
+  232  ls
+  233  history
+  234  ls
+  235  history > 1.log
