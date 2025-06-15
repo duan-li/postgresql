@@ -3,19 +3,19 @@ version: '3.8'
 services:
   postgres:
     image: pgvector/pgvector:pg17
-    container_name: postgres-pgvector
+    container_name: pgvector
     restart: always
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-your_secure_password}
-      POSTGRES_DB: vector_db
       TZ: Australia/Melbourne
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      # - postgres_data:/var/lib/postgresql/data
+      - ./postgres_data:/var/postgresql/pgdata # Persistent storage
       - ./postgresql.conf:/etc/postgresql/postgresql.conf
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      # - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     command: postgres -c config_file=/etc/postgresql/postgresql.conf
     deploy:
       resources:
@@ -31,6 +31,6 @@ services:
       retries: 5
       start_period: 30s
 
-volumes:
-  postgres_data:
-    name: postgres_pgvector_data
+# volumes:
+#   postgres_data:
+#     name: postgres_pgvector_data
