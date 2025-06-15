@@ -8,6 +8,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-your_secure_password}
+      POSTGRES_INITDB_ARGS: --lc-numeric=en_US.UTF-8
       TZ: Australia/Melbourne
     ports:
       - "5432:5432"
