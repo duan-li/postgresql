@@ -21,19 +21,19 @@ help: ## Show this help
 
 start: ## Start the PostgreSQL service
 	@echo "${GREEN}Starting PostgreSQL with pgvector...${RESET}"
-	@docker-compose up -d
+	@docker compose up -d
 
 stop: ## Stop the PostgreSQL service
 	@echo "${YELLOW}Stopping PostgreSQL...${RESET}"
-	@docker-compose down
+	@docker compose down
 
 restart: stop start ## Restart the PostgreSQL service
 
 status: ## Show container status
-	@docker-compose ps
+	@docker compose ps
 
 logs: ## Show container logs (Ctrl+C to exit)
-	@docker-compose logs -f
+	@docker compose logs -f
 
 psql: ## Connect to PostgreSQL with psql
 	@echo "${GREEN}Connecting to PostgreSQL...${RESET}"
@@ -42,12 +42,12 @@ psql: ## Connect to PostgreSQL with psql
 backup: ## Create a database backup
 	@mkdir -p backups
 	@echo "${GREEN}Creating database backup...${RESET}"
-	@docker-compose exec -T postgres pg_dump -U ${POSTGRES_USER} -d ${POSTGRES_DB} > backups/backup_$(shell date +%Y%m%d_%H%M%S).sql
+	@docker compose exec -T pgvector pg_dump -U ${POSTGRES_USER} -d ${POSTGRES_DB} > backups/backup_$(shell date +%Y%m%d_%H%M%S).sql
 	@echo "Backup created: backups/backup_$(shell date +%Y%m%d_%H%M%S).sql"
 
 clean: ## Remove containers and networks (keeps volumes)
 	@echo "${YELLOW}Removing containers and networks...${RESET}"
-	@docker-compose down
+	@docker compose down
 
 clean-all: clean ## Remove everything including volumes (WARNING: deletes all data!)
 	@echo "${YELLOW}Removing volumes...${RESET}"
