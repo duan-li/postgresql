@@ -16,7 +16,7 @@ services:
       # - postgres_data:/var/lib/postgresql/data
       - ./postgres_data:/var/postgresql/pgdata # Persistent storage
       - ./postgresql.conf:/etc/postgresql/postgresql.conf
-      # - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     command: postgres -c config_file=/etc/postgresql/postgresql.conf
     deploy:
       resources:
