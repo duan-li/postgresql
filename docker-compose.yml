@@ -13,10 +13,8 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      # - postgres_data:/var/lib/postgresql/data
-      - ./postgres_data:/var/postgresql/pgdata # Persistent storage
+      - ./postgres_data:/var/lib/postgresql/data
       - ./postgresql.conf:/etc/postgresql/postgresql.conf
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     command: postgres -c config_file=/etc/postgresql/postgresql.conf
     deploy:
       resources:
@@ -32,6 +30,3 @@ services:
       retries: 5
       start_period: 30s
 
-# volumes:
-#   postgres_data:
-#     name: postgres_pgvector_data
