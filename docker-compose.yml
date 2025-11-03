@@ -10,11 +10,15 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-your_secure_password}
       POSTGRES_INITDB_ARGS: --lc-numeric=en_US.UTF-8
       TZ: Australia/Melbourne
+      PGDATA: /var/postgresql/pgdata                  # ★ 告诉 PG 实际数据目录
     ports:
       - "5432:5432"
     volumes:
-      - ./postgres_data:/var/lib/postgresql/data
+      - ./postgres_data:/var/postgresql/pgdata       # ★ 数据持久化
+      - ./pgbackups:/backups                         # ★ 备份与 WAL 归档
       - ./postgresql.conf:/etc/postgresql/postgresql.conf
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./pglogs:/var/log/postgresql                 # 可选：持久化日志
     command: postgres -c config_file=/etc/postgresql/postgresql.conf
     deploy:
       resources:
@@ -29,4 +33,3 @@ services:
       timeout: 5s
       retries: 5
       start_period: 30s
-
